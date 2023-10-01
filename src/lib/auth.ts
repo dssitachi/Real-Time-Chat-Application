@@ -2,6 +2,7 @@ import { NextAuthOptions } from 'next-auth';
 import { db } from './db';
 import { UpstashRedisAdapter } from "@next-auth/upstash-redis-adapter";
 import GooogleProvider from "next-auth/providers/google";
+import { fetchRedis } from '@/utils/redis';
 
 function getGoogleCredentials() {
     const clientId = process.env.GOOGLE_CLIENT_ID
@@ -35,11 +36,12 @@ export const authOptions: NextAuthOptions = {
     },
     callbacks: {
         async jwt({token, user}) {
-            const dbUser = (await db.get(`user:${token.id}`)) as User | null
-            if(!dbUser) {
+            const response = (await fetchRedis('get', `user:${token.id}`)) as string | null
+            if(!response) {
                 token.id = user!.id
                 return token
             }
+            const dbUser = JSON.parse(response) as User
             return {
                 id: dbUser.id,
                 name: dbUser.name,

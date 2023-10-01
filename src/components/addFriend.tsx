@@ -19,7 +19,7 @@ const formSchema = z.object({
     email: z.string().email(),
 });
 
-function page() {
+function AddFriend() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -37,12 +37,12 @@ function page() {
     }
 
     return (
-        <section className="max-w-md m-4">
-            <h2 className="text-2xl mb-4">Add a friend</h2>
+        <section className="max-w-md">
+            <h2 className="text-lg mb-2">Add a friend</h2>
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8"
+                    className="flex items-end gap-4 my-2"
                 >
                     <FormField
                         control={form.control}
@@ -57,11 +57,11 @@ function page() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className="text-xs">Submit</Button>
                 </form>
             </Form>
         </section>
     );
 }
 
-export default page;
+export default AddFriend;

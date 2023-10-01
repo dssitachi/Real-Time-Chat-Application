@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main>{children}</main>
+        <main className="lg:max-w-7xl lg:mx-auto">{children}</main>
         <Toaster />
       </body>
     </html>
