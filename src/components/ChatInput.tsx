@@ -36,7 +36,7 @@ function ChatInput({ chatId }: ChatInputProps) {
     }
 
     return (
-        <div className="p-4 flex items-center gap-2">
+        <div className="px-4 py-2 flex items-center gap-2 bg-gray-200">
             <Input
                 id="email"
                 type="email"
@@ -44,7 +44,7 @@ function ChatInput({ chatId }: ChatInputProps) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
-            <Button variant="outline" onClick={sendMessage}>
+            <Button variant="ghost" onClick={sendMessage}>
                 <SendHorizontal />
             </Button>
         </div>

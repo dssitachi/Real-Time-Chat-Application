@@ -35,7 +35,7 @@ function MessagesContainer({
     }, [chatId]);
 
     return (
-        <div className="flex-grow overflow-y-scroll">
+        <div className="flex-grow overflow-y-scroll bg-[#ece5dd]">
             <div className="h-full flex flex-col-reverse overflow-y-scroll px-4">
                 {messages.map(function (message, index) {
                     const userIsSender =
@@ -56,9 +56,9 @@ function MessagesContainer({
                                 className={cn(
                                     "px-4 py-2 rounded-lg inline-block text-sm",
                                     {
-                                        "bg-indigo-600 text-white":
+                                        "bg-[#dcf8c6] text-gray-900":
                                             userIsSender,
-                                        "bg-gray-200 text-gray-900":
+                                        "bg-white text-gray-900":
                                             !userIsSender,
                                         "rounded-br-none":
                                             !hasNextMessageFromSameUser &&

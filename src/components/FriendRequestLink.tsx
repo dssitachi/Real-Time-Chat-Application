@@ -2,7 +2,12 @@
 
 import { pusherClient } from "@/lib/pusher";
 import { toPusherKey } from "@/lib/utils";
-import { UserPlus2, Users } from "lucide-react";
+import {
+    ArrowRightSquare,
+    ChevronRightSquare,
+    UserPlus2,
+    Users,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -45,14 +50,16 @@ function FriendRequest({
             href="/dashboard/requests"
             className="flex items-center px-2 gap-2"
         >
-            <UserPlus2 />
-            <span className="text-sm truncate">Friend Requests</span>
+            <span className="text-sm truncate text-[#25d366] hover:text-[#075e54]">
+                Friend Requests
+            </span>
 
             {initialUnseenRequestCount ? (
                 <span className="rounded-[8px] font-bold">
                     {initialUnseenRequestCount}
                 </span>
             ) : null}
+            <ArrowRightSquare />
         </Link>
     );
 }

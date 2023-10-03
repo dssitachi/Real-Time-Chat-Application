@@ -54,7 +54,7 @@ async function page({ params }: PageProps) {
 
     return (
         <section className="w-full flex flex-col h-full">
-            <div className="flex p-4 items-center gap-2 border-b">
+            <div className="flex px-4 py-2 items-center gap-2 border-b bg-gray-200">
                 <div className="relative h-8 w-8">
                     <Image
                         fill

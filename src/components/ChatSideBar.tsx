@@ -7,8 +7,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type ChatSideBarProps = {
-    friends: User[],
-    userId: string
+    friends: User[];
+    userId: string;
 };
 function ChatSideBar({ friends, userId }: ChatSideBarProps) {
     const router = useRouter();
@@ -25,37 +25,42 @@ function ChatSideBar({ friends, userId }: ChatSideBarProps) {
     }, []);
 
     return (
-        <ul>
-            {friends.map(function (friend) {
-                const unseenMessagesCount = unseenMessages.filter(
-                    (unseenMsg) => unseenMsg.senderId == friend.id
-                ).length;
-                return (
-                    <li 
-                        key={friend.id}
-                        className="p-2 text-sm border-t flex gap-2 items-center hover:bg-gray-100 hover:cursor-pointer"
-                    >
-                        <div className="relative h-8 w-8">
-                            <Image
-                                fill
-                                referrerPolicy="no-referrer"
-                                className="rounded-full"
-                                src={friend.image || ""}
-                                alt="Profile Picture"
-                            />
-                        </div>
-                        <Link
-                            href={`/dashboard/chat/${chatHrefConstructor(
-                                userId,
-                                friend.id
-                            )}`}
+        <>
+            <span className="px-2 text-xs font-medium text-gray-600 py-0">
+                CHATS
+            </span>
+            <ul>
+                {friends.map(function (friend) {
+                    const unseenMessagesCount = unseenMessages.filter(
+                        (unseenMsg) => unseenMsg.senderId == friend.id
+                    ).length;
+                    return (
+                        <li
+                            key={friend.id}
+                            className="p-2 text-sm border-t flex gap-2 items-center hover:bg-gray-100 hover:cursor-pointer"
                         >
-                            {friend.name}
-                        </Link>
-                    </li>
-                );
-            })}
-        </ul>
+                            <div className="relative h-8 w-8">
+                                <Image
+                                    fill
+                                    referrerPolicy="no-referrer"
+                                    className="rounded-full"
+                                    src={friend.image || ""}
+                                    alt="Profile Picture"
+                                />
+                            </div>
+                            <Link
+                                href={`/dashboard/chat/${chatHrefConstructor(
+                                    userId,
+                                    friend.id
+                                )}`}
+                            >
+                                {friend.name}
+                            </Link>
+                        </li>
+                    );
+                })}
+            </ul>
+        </>
     );
 }
 
