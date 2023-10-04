@@ -24,7 +24,6 @@ async function page() {
             }
         })
     );
-    // console.log(incomingFriendRequest)
 
     return (
         <section className="flex flex-col p-4">

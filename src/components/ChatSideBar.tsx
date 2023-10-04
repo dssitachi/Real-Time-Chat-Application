@@ -22,7 +22,7 @@ function ChatSideBar({ friends, userId }: ChatSideBarProps) {
                 return prev.filter((msg) => !pathname.includes(msg.senderId));
             });
         }
-    }, []);
+    }, [pathname]);
 
     return (
         <>

@@ -28,7 +28,6 @@ function AddFriend() {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
         try {
             await axios.post('/api/friend/add', values)
         } catch(err) {

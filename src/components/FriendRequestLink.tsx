@@ -43,7 +43,7 @@ function FriendRequest({
                 friendRequestHandler
             );
         };
-    }, []);
+    }, [sessionId]);
 
     return (
         <Link
