@@ -33,7 +33,7 @@ function FriendRequests({
             pusherClient.unsubscribe(toPusherKey(`user:${sessionId}:incoming_friend_requests`))
             pusherClient.unbind('incoming_friend_requests', friendRequestHandler);
         }
-    }, [sessionId])
+    }, [sessionId, friendRequests])
 
     async function acceptFriend(senderId: string) {
         await axios.post("/api/friend/accept", { id: senderId });
